@@ -42,4 +42,5 @@ def fibonacci_recursive(n):
 #Фиббоначи с пеатью чисел
 
 print(fibonacci_recursive(7))
+
 # def print_fibonacci_recursive(n):
