@@ -39,8 +39,15 @@ def fibonacci_recursive(n):
     else:
         return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
 
-#Фиббоначи с пеатью чисел
+#Фиббоначи с пеатью чисел - для этого везде добавляю fстроку
+
+# def fibonacci_recursive(n):
+#     if n <= 0:
+#         return f'{0}'
+#     elif n == 1:
+#         return f'{1}'
+#     else:
+#         return f'{n} {fibonacci_recursive(n-1) + fibonacci_recursive(n-2)}'
 
 print(fibonacci_recursive(7))
 
-# def print_fibonacci_recursive(n):
