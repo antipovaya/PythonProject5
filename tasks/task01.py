@@ -80,3 +80,8 @@ print(maxnum2)
 # large = max(num)
 # print(largest)
 # print(large)
+
+# a, b = 1, 0
+# for _ in range(int(input())):
+#     print(a, end = ' ')
+#     a, b = a + b, a

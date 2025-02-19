@@ -31,23 +31,28 @@ def count_recur(i):
 # count_recur(0)
 # count_recur(-1) -> начинаем возвраты
 
-def fibonacci_recursive(n):
-    if n <= 0:
-        return 0
-    elif n == 1:
-        return 1
-    else:
-        return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
-
-#Фиббоначи с пеатью чисел - для этого везде добавляю fстроку
-
 # def fibonacci_recursive(n):
 #     if n <= 0:
-#         return f'{0}'
+#         return 0
 #     elif n == 1:
-#         return f'{1}'
+#         return 1
 #     else:
-#         return f'{n} {fibonacci_recursive(n-1) + fibonacci_recursive(n-2)}'
+#         return fibonacci_recursive(n-1) + fibonacci_recursive(n-2)
 
-print(fibonacci_recursive(7))
+#Фиббоначи с пеатью чисел
 
+
+def fibonacci(n):
+    if n in (1, 2):
+        return 1
+    return fibonacci(n - 1) + fibonacci(n - 2)
+
+num = int(input())
+# for i in range(1, num+1):
+#     print(fibonacci(i))
+
+
+total = ''
+for i in range(1, num+1):
+    total += str(fibonacci(i))
+print(' '.join(total))
