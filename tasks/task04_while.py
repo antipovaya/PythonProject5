@@ -1,5 +1,6 @@
 # программа определяет, есть ли в числе цифра 7
 
+
 # num = int(input())
 # has_seven = False  # сигнальная метка
 #
@@ -82,7 +83,7 @@
 # Формат выходных данных
 # Программа должна вывести текст в соответствии с условием задачи.
 
-nums = ' '.join(input()).split()  # ['1', '2', '3']
+# nums = ' '.join(input()).split()  # ['1', '2', '3']
 
 # for i in range(len(nums)):
 #     nums[i] = int(nums[i])
@@ -129,3 +130,138 @@ nums = ' '.join(input()).split()  # ['1', '2', '3']
 #
 # Формат выходных данных
 # Программа должна вывести значения указанных величин в указанном порядке, каждое на отдельной строке.
+
+# total_nums = 0
+# count_nums = 0
+# multiplication_nums = 1
+# average_nums = 0
+# first_num = 0
+# sum_first_and_last = 0
+# nums = int(input())
+# nums_temp = nums
+# while nums:
+#
+#     num = nums % 10
+#     total_nums += num
+#     count_nums += 1
+#     multiplication_nums *= num
+#     nums //= 10
+# average_nums = total_nums / count_nums
+# first_num = nums_temp // (10**(count_nums - 1))
+# sum_first_and_last = first_num + nums_temp % 10
+#
+# print(total_nums)
+# print(count_nums)
+# print(multiplication_nums)
+# print(average_nums)
+# print(first_num)
+# print(sum_first_and_last)
+
+
+# import numpy
+# nums = [int(i) for i in input()]
+# print(sum(nums), len(nums), numpy.prod(nums), numpy.mean(nums), nums[0], nums[0] + nums[-1], sep='\n')
+
+#///////////////////////////////////////////////////////////////////////////////////////////
+
+# Дано натуральное число
+#
+# n(n>9). Напишите программу, которая определяет его вторую (с начала) цифру.
+#
+# Формат входных данных
+# На вход программе подаётся одно натуральное число, состоящее как минимум из двух цифр.
+#
+# Формат выходных данных
+# Программа должна вывести его вторую (с начала) цифру.
+
+# nums = [int(i) for i in input()]
+# print(nums[1])
+
+# либо через цикл
+
+# nums = int(input())
+# while nums > 99:
+#     nums //= 10
+# print(nums % 10)
+
+
+#///////////////////////////////////////////////////////////////////////////////////////////
+
+
+# Дано натуральное число. Напишите программу, которая определяет, состоит ли указанное число из одинаковых цифр.
+#
+# Формат входных данных
+# На вход программе подаётся одно натуральное число.
+#
+# Формат выходных данных
+# Программа должна вывести «YES» (без кавычек), если число состоит из одинаковых цифр, или «NO» (без кавычек) в противном случае.
+
+# nums = int(input())
+# total_nums = 0
+# count_nums = 0
+# last_num = 0
+# while nums:
+#     last_num = nums % 10
+#     total_nums += nums % 10
+#     count_nums += 1
+#     nums //= 10
+# if total_nums / count_nums == last_num:
+#     print('YES')
+# else:
+#     print('NO')
+
+# еще один:
+
+# nums = [int(i) for i in input()]
+#
+# if sum(nums) / len(nums) == nums[0]:  # 44534 не пройдет
+#     print('YES')
+# else:
+#     print('NO')
+
+# через set:
+
+# print('YES' if len(set(input())) == 1 else 'NO')
+
+
+# через цикл:
+
+# n = int(input())
+# flag = "YES"
+# last_digit = n % 10
+#
+# while n > 0:
+#     cur_digit = n % 10
+#
+#     if last_digit != cur_digit:
+#         flag = "NO"
+#
+#     n //= 10
+#
+# print(flag)
+
+#///////////////////////////////////////////////////////////////////////////////////////////
+
+# Дано натуральное число. Напишите программу, которая определяет, является ли последовательность его цифр при просмотре
+# справа налево упорядоченной по неубыванию.
+#
+# Формат входных данных
+# На вход программе подаётся одно натуральное число.
+#
+# Формат выходных данных
+# Программа должна вывести «YES» (без кавычек), если последовательность его цифр при просмотре справа налево является
+# упорядоченной по неубыванию, или «NO» (без кавычек) в противном случае.
+
+n = int(input())
+flag = "YES"
+last_digit = n % 10
+
+while n > 0:
+    cur_digit = n % 10
+
+    if last_digit != cur_digit:
+        flag = "NO"
+
+    n //= 10
+
+print(flag)

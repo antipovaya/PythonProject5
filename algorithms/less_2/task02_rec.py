@@ -42,17 +42,17 @@ def count_recur(i):
 #Фиббоначи с пеатью чисел
 
 
-def fibonacci(n):
-    if n in (1, 2):
-        return 1
-    return fibonacci(n - 1) + fibonacci(n - 2)
-
-num = int(input())
+# def fibonacci(n):
+#     if n in (1, 2):
+#         return 1
+#     return fibonacci(n - 1) + fibonacci(n - 2)
+#
+# num = int(input())
+# # for i in range(1, num+1):
+# #     print(fibonacci(i))
+#
+#
+# total = ''
 # for i in range(1, num+1):
-#     print(fibonacci(i))
-
-
-total = ''
-for i in range(1, num+1):
-    total += str(fibonacci(i))
-print(' '.join(total))
+#     total += str(fibonacci(i))
+# print(' '.join(total))
