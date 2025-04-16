@@ -6,13 +6,15 @@ from Animal import Bird
 
 
 class AnimalFactory:
+    count_animal = 0
+    list_animal = []
+
     @staticmethod
     def create_animal(type_of_animal: str, *args) -> Animal:
         """
         Создает экземпляр животного на основе переданного типа и
         параметров.
-        :param type_of_animal: Название типа животного (например, 'Dog'
-        или 'Cat')
+        :param type_of_animal: Название типа животного
         :param args: Параметры для конструктора животного
         :return: Экземпляр соответствующего класса животного
         """
@@ -41,6 +43,7 @@ class AnimalFactory:
             'Галка': Bird,
             'Сойка': Bird,
             'Голубь': Bird,
+            'Курица': Bird
         }
         animal_classes_pack_animal = {
             'Осел': PackAnimal,
@@ -50,12 +53,16 @@ class AnimalFactory:
             'Олень': PackAnimal,
         }
         if type_of_animal in animal_classes_pet:
+            AnimalFactory.count_animal += 1
             return animal_classes_pet[type_of_animal](animal_classes_pet[type_of_animal], *args)
         elif type_of_animal in animal_classes_mammal:
+            AnimalFactory.count_animal += 1
             return animal_classes_mammal[type_of_animal](animal_classes_mammal[type_of_animal], *args)
         elif type_of_animal in animal_classes_bird:
+            AnimalFactory.count_animal += 1
             return animal_classes_bird[type_of_animal](animal_classes_bird[type_of_animal], *args)
         elif type_of_animal in animal_classes_pack_animal:
+            AnimalFactory.count_animal += 1
             return animal_classes_pack_animal[type_of_animal](animal_classes_pack_animal[type_of_animal], *args)
         else:
             raise ValueError(f"Unknown animal type: {type_of_animal}")
@@ -63,11 +70,14 @@ class AnimalFactory:
 # Создаем экземпляры животных с использованием фабрики
 dog = AnimalFactory.create_animal('Собака', 'Малыш', '2020-10-12', 'Россия', 'Шпиц')
 
-wolf = AnimalFactory.create_animal('Волк', 'Петр', '2022-11-12', 'Россия', 'хищник', 'наземный')
-print(wolf.get_age())
+# print(type(dog.get_type_of_animal()))
+# print(type(dog.get_name()))
+# print(type(dog.get_date_of_birth()))
+# print(type(dog.get_age()))
+# print(type(dog.get_breed()))
 
-bird = AnimalFactory.create_animal('Сокол', 'Валера', '2015-11-12', 'Россия', 'хищник')
-print(bird.get_age())
 
-donkey = AnimalFactory.create_animal('Осел','Антон', '2013-09-12', 'Россия', 'Домашний осел', 140)
-print(donkey.get_age())
+
+
+
+
