@@ -15,7 +15,7 @@ def main():
             break
 
         elif command == '1':
-            type_of_animal = input('Введите название животного (например, "собака", "кошка", "курица" и пр.): ')
+            type_of_animal = input('Введите название животного (например, "Собака", "Кошка", "Курица" и пр.): ')
             name = input('Введите имя животного: ')
             date_of_birth = input('Введите дату рождения животного (в формате "2012-12-12"): ')
             birthplace = input('Введите место рождения животного: ')
@@ -76,7 +76,19 @@ def main():
                                                      age_animal,
                                                      animal.get_birthplace(),
                                                      animal.get_nutrition())
-
+        elif command == '2':
+            additional_command = input('Введите команду для просмотра таблицы: 1 - домашние питомцы, '
+                                       '2 - вьючные животные, '
+                                       '3 - млекопитающие, '
+                                       '4 - птицы ')
+            if additional_command == '1':
+                AnimalRegistry.reading_table('Pet')
+            elif additional_command == '2':
+                AnimalRegistry.reading_table('Pack_animal')
+            elif additional_command == '3':
+                AnimalRegistry.reading_table('Mammal')
+            else:
+                AnimalRegistry.reading_table('Bird')
 
 
 main()

@@ -1,5 +1,5 @@
 import sqlite3
-
+import pandas as pd
 
 class AnimalRegistry:
 
@@ -191,10 +191,7 @@ class AnimalRegistry:
             # No need to call connection.close(); it's done automatically!
             print("Запись создана")
 
-    # class PackAnimal(Pet):
-    #     def __init__(self, type_of_animal, name, date_of_birth, birthplace, breed, lifting_capacity):
-    #         super().__init__(type_of_animal, name, date_of_birth, birthplace, breed)
-    #         self.lifting_capacity = lifting_capacity  # грузоподъемность вьючного животного
+
     @staticmethod
     def create_table_pack_animal():
         with sqlite3.connect('Animal_registry.db') as connection:
@@ -243,3 +240,16 @@ class AnimalRegistry:
 
             # No need to call connection.close(); it's done automatically!
             print("Запись создана")
+
+    @staticmethod
+    def reading_table(name_table):
+        with sqlite3.connect('Animal_registry.db') as connection:
+            # Write the SQL command to select all records from the table
+            select_query = f"SELECT * FROM {name_table};"
+
+            # Use pandas to read SQL query directly into a DataFrame
+            df = pd.read_sql_query(select_query, connection)
+
+        # Display the DataFrame
+        print(f"Животные в таблице {name_table}")
+        print(df)
