@@ -1,10 +1,3 @@
-from pyspark.examples.src.main.python.als import update
-
-from Animal import Animal
-from Animal import Pet
-from Animal import Mammal
-from Animal import PackAnimal
-from Animal import Bird
 from AnimalFactory import AnimalFactory
 from AnimalRegistry import AnimalRegistry
 
@@ -100,15 +93,22 @@ def main():
 
             if additional_command == '1':
                 AnimalRegistry.reading_table('Pet')
-                update_animal = int(input('Введите id строки, которую хотите обновить: '))
-                column_update = input('Введите название столбца, который хотите обновить: ')
-                if column_update == 'age':
-                    new_value = int(input('Введите возраст: '))
-                    AnimalRegistry.update_table('Pet', update_animal, column_update, new_value)
-                else:
-                    new_value = input('Введите новое значение: ')
-                    AnimalRegistry.update_table('Pet', update_animal, column_update, new_value)
-                AnimalRegistry.reading_table('Pet')
+                AnimalRegistry.reading_table('Pet_commands')
+                additional_command = input('Введите название таблицы, с которой хотите работать: ')
+                if additional_command == 'Pet':
+                    update_animal = int(input('Введите id строки, которую хотите обновить: '))
+                    column_update = input('Введите название столбца, который хотите обновить: ')
+                    if column_update == 'age':
+                        new_value = int(input('Введите возраст: '))
+                        AnimalRegistry.update_table('Pet', update_animal, column_update, new_value)
+                    else:
+                        new_value = input('Введите новое значение: ')
+                        AnimalRegistry.update_table('Pet', update_animal, column_update, new_value)
+                    AnimalRegistry.reading_table('Pet')
+                elif additional_command == 'Pet_commands':
+                    pet_id = int(input('Введите id питомца, которому хотите добавить новую команду: '))
+                    command_pet = input('Введите название команды: ')
+                    AnimalRegistry.writing_to_table_pet_commands(command_pet, pet_id)
 
             elif additional_command == '2':
                 AnimalRegistry.reading_table('Pack_animal')
@@ -146,7 +146,7 @@ def main():
                     AnimalRegistry.update_table('Bird', update_animal, column_update, new_value)
                 AnimalRegistry.reading_table('Bird')
 
-        elif command == '3':
+        elif command == '4':
             additional_command = input('В какой таблице осуществлять поиск? 1 - домашние питомцы, '
                                        '2 - вьючные животные, '
                                        '3 - млекопитающие, '
@@ -154,8 +154,27 @@ def main():
 
             if additional_command == '1':
                 AnimalRegistry.reading_table('Pet')
-                column_update = input('По какому стобцу осуществлять поиск? ')
+                column_search = input('По какому стобцу осуществлять поиск? ')
                 search_value = input('Введите искомое значение: ')
+                AnimalRegistry.search_in_table('Pet', column_search, search_value)
+
+            elif additional_command == '2':
+                AnimalRegistry.reading_table('Pack_animal')
+                column_search = input('По какому стобцу осуществлять поиск? ')
+                search_value = input('Введите искомое значение: ')
+                AnimalRegistry.search_in_table('Pack_animal', column_search, search_value)
+
+            elif additional_command == '3':
+                AnimalRegistry.reading_table('Mammal')
+                column_search = input('По какому стобцу осуществлять поиск? ')
+                search_value = input('Введите искомое значение: ')
+                AnimalRegistry.search_in_table('Mammal', column_search, search_value)
+
+            elif additional_command == '4':
+                AnimalRegistry.reading_table('Bird')
+                column_search = input('По какому стобцу осуществлять поиск? ')
+                search_value = input('Введите искомое значение: ')
+                AnimalRegistry.search_in_table('Bird', column_search, search_value)
 
 
 

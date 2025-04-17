@@ -190,16 +190,21 @@ class AnimalRegistry:
 
     @staticmethod
     def create_table_pet_commands():
+        """
+        Создает базу данных и таблицу Pet_commands, если они отсутствуют.
+        """
         with sqlite3.connect('Animal_registry.db') as connection:
+            connection.execute("PRAGMA foreign_keys = ON;")
             # Create a cursor object
             cursor = connection.cursor()
 
             # Write the SQL command to create the Pet_commands table
             create_table_query = '''
             CREATE TABLE IF NOT EXISTS Pet_commands (
-                id INTEGER FOREIGN KEY (PetId) REFERENCES Pet (id),
-                command TEXT NOT NULL
-            );
+                command TEXT,
+                PetId INTEGER,
+                FOREIGN KEY (PetId) REFERENCES Pet (id)
+                );
             '''
 
             # Execute the SQL command
@@ -212,16 +217,16 @@ class AnimalRegistry:
             print("Таблица 'Pet_commands' создана!")
 
     @staticmethod
-    def writing_to_table_pet_commands(command):
+    def writing_to_table_pet_commands(command, PetId):
         with sqlite3.connect('Animal_registry.db') as connection:
             cursor = connection.cursor()
 
             # Insert a record into the Pet table
             insert_query = '''
-            INSERT INTO Pet (command) 
-            VALUES (?);
+            INSERT INTO Pet_commands (command, PetId) 
+            VALUES (?, ?);
             '''
-            pet_data = command
+            pet_data = (command, PetId)
 
             cursor.execute(insert_query, pet_data)
 
@@ -309,13 +314,14 @@ class AnimalRegistry:
             df = pd.read_sql_query(select_query, connection)
 
         # Display the DataFrame
-        print(f"Животные в таблице {name_table}")
+        print(f"Таблица {name_table}: ")
+        print()
         print(df)
 
     @staticmethod
     def update_table(name_table, update_animal_id, column_update, new_value):
         """
-        Чтение таблицы.
+        Обновление записей в таблице.
         :param name_table: Имя таблицы
         :param update_animal_id: id животного в базе
         :param column_update: Название атрибута, который хотим изменить
@@ -343,3 +349,25 @@ class AnimalRegistry:
 
             # Print a confirmation message
             print(f"Значение {column_update} строки с id {update_animal_id} было изменено на {new_val}.")
+
+    @staticmethod
+    def search_in_table(name_table, column_search, search_value):
+        """
+        Поиск записей в таблице по заданному атрибуту.
+        :param name_table: Имя таблицы
+        :param column_search: Столбец для поиска
+        :param search_value: Искомое значение
+        """
+        with sqlite3.connect('Animal_registry.db') as connection:
+            # Write the SQL command to select all records from the table
+            select_query = f'''
+            SELECT * FROM {name_table}                   
+            WHERE {column_search} = "{search_value}";
+            '''
+
+            # Use pandas to read SQL query directly into a DataFrame
+            df = pd.read_sql_query(select_query, connection)
+
+        # Display the DataFrame
+        print(f"Найденные животные в таблице {name_table}")
+        print(df)
