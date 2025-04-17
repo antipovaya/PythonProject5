@@ -236,7 +236,6 @@ class AnimalRegistry:
             # No need to call connection.close(); it's done automatically!
             print("Запись создана")
 
-
     @staticmethod
     def create_table_pack_animal():
         """
@@ -349,6 +348,26 @@ class AnimalRegistry:
 
             # Print a confirmation message
             print(f"Значение {column_update} строки с id {update_animal_id} было изменено на {new_val}.")
+
+    @staticmethod
+    def update_age(name_table):
+        with sqlite3.connect('Animal_registry.db') as connection:
+            cursor = connection.cursor()
+
+            # SQL command to update
+            update_query = f'''
+            UPDATE {name_table} 
+            SET age =  (julianday('now') - julianday(date_of_birth)) / 365;
+            '''
+            # SET age =  CURRENT_DATE - date_of_birth;
+            # Execute the SQL command with the data
+            cursor.execute(update_query)
+
+            # Commit the changes to save the update
+            connection.commit()
+
+            # Print a confirmation message
+            print(f"Значение age в таблице {name_table}  было обновлено.")
 
     @staticmethod
     def search_in_table(name_table, column_search, search_value):

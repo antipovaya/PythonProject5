@@ -127,7 +127,7 @@ class PackAnimal(Pet):
         return self.breed
 
     def get_lifting_capacity(self):
-        return self.breed
+        return self.lifting_capacity
 
 # cat = Pet("Кошка", "Ася", "2020-10-12", "Россия", "Британская")
 # print(cat.get_age())

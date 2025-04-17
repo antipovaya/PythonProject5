@@ -65,7 +65,7 @@ def main():
                 animal = AnimalFactory.create_animal(type_of_animal, name, date_of_birth, birthplace, nutrition)
                 age_animal = animal.get_age()
                 AnimalRegistry.create_table_bird()
-                AnimalRegistry.writing_to_table_bird(animal.get_type_of_animal(),
+                AnimalRegistry.writing_to_table_bird(type_of_animal,
                                                      animal.get_name(),
                                                      animal.get_date_of_birth(),
                                                      age_animal,
@@ -76,8 +76,11 @@ def main():
                                        '2 - вьючные животные, '
                                        '3 - млекопитающие, '
                                        '4 - птицы ')
+            print()
             if additional_command == '1':
                 AnimalRegistry.reading_table('Pet')
+                print()
+                AnimalRegistry.reading_table('Pet_commands')
             elif additional_command == '2':
                 AnimalRegistry.reading_table('Pack_animal')
             elif additional_command == '3':
