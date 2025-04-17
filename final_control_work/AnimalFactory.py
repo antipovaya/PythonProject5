@@ -6,6 +6,7 @@ from Animal import Bird
 
 
 class AnimalFactory:
+    """Класс-фабрика для создания экземпляров наследников класса Animal."""
     count_animal = 0
     list_animal = []
 
@@ -19,38 +20,41 @@ class AnimalFactory:
         :return: Экземпляр соответствующего класса животного
         """
         animal_classes_pet = {
-        'Собака' : Pet,
-        'Кошка' : Pet,
-        'Крыса' : Pet,
-        'Хомяк' : Pet,
-        'Кролик': Pet,
-        'Шиншилла': Pet
+        'собака' : Pet,
+        'кошка' : Pet,
+        'крыса' : Pet,
+        'хомяк' : Pet,
+        'кролик': Pet,
+        'шиншилла': Pet
         }
         animal_classes_mammal = {
-            'Лев': Mammal,
-            'Тигр': Mammal,
-            'Жираф': Mammal,
-            'Панда': Mammal,
-            'Заяц': Mammal,
-            'Медведь': Mammal,
-            'Волк': Mammal,
+            'лев': Mammal,
+            'тигр': Mammal,
+            'жираф': Mammal,
+            'панда': Mammal,
+            'заяц': Mammal,
+            'медведь': Mammal,
+            'волк': Mammal,
         }
         animal_classes_bird = {
-            'Сокол': Bird,
-            'Сова': Bird,
-            'Зяблик': Bird,
-            'Сорока': Bird,
-            'Галка': Bird,
-            'Сойка': Bird,
-            'Голубь': Bird,
-            'Курица': Bird
+            'сокол': Bird,
+            'сова': Bird,
+            'зяблик': Bird,
+            'сорока': Bird,
+            'галка': Bird,
+            'сойка': Bird,
+            'голубь': Bird,
+            'курица': Bird,
+            'пингвин': Bird
         }
         animal_classes_pack_animal = {
-            'Осел': PackAnimal,
-            'Мул': PackAnimal,
-            'Верблюд': PackAnimal,
-            'Лама': PackAnimal,
-            'Олень': PackAnimal,
+            'осел': PackAnimal,
+            'мул': PackAnimal,
+            'верблюд': PackAnimal,
+            'лама': PackAnimal,
+            'олень': PackAnimal,
+            'лошадь': PackAnimal,
+            'буйвол': PackAnimal
         }
         if type_of_animal in animal_classes_pet:
             AnimalFactory.count_animal += 1
@@ -68,7 +72,7 @@ class AnimalFactory:
             raise ValueError(f"Unknown animal type: {type_of_animal}")
 
 # Создаем экземпляры животных с использованием фабрики
-dog = AnimalFactory.create_animal('Собака', 'Малыш', '2020-10-12', 'Россия', 'Шпиц')
+# dog = AnimalFactory.create_animal('Собака', 'Малыш', '2020-10-12', 'Россия', 'Шпиц')
 
 # print(type(dog.get_type_of_animal()))
 # print(type(dog.get_name()))
