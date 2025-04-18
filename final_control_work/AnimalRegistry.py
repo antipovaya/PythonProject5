@@ -351,6 +351,10 @@ class AnimalRegistry:
 
     @staticmethod
     def update_age(name_table):
+        """
+        Обновление возрастов всех животных в таблице.
+        :param name_table: Имя таблицы
+        """
         with sqlite3.connect('Animal_registry.db') as connection:
             cursor = connection.cursor()
 

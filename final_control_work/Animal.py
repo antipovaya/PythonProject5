@@ -4,11 +4,16 @@ from datetime import datetime
 class Animal:
     """Базовый класс для хранения животных в питомнике."""
     def __init__(self, type_of_animal, name, date_of_birth, birthplace):
-        """Инициализирует новый экземпляр класса Animal."""
-        self.type_of_animal = type_of_animal  # вид, т.е. конкретное название животного
-        self.name = name  # имя животного в заповеднике согласно документу
-        self.date_of_birth = date_of_birth  # дата рождения, согласно документу
-        self.birthplace = birthplace  # страна рождения
+        """Инициализирует новый экземпляр класса Animal.
+        :param type_of_animal: Вид, т.е. конкретное название животного
+        :param name: Имя животного, согласно документу
+        :param date_of_birth: Дата рождения животного, согласно документу (в формате '2012-12-22')
+        :param birthplace: Страна рождения
+        """
+        self.type_of_animal = type_of_animal
+        self.name = name
+        self.date_of_birth = date_of_birth
+        self.birthplace = birthplace
 
     def get_age(self, date_format='%Y-%m-%d'):
         pass
@@ -27,7 +32,16 @@ class Animal:
 
 
 class Mammal(Animal):
+    """Класс для хранения млекопитающих в питомнике."""
     def __init__(self, type_of_animal, name, date_of_birth, birthplace, nutrition, habitat):
+        """Инициализирует новый экземпляр класса Mammal.
+        :param type_of_animal: Вид, т.е. конкретное название животного
+        :param name: Имя животного, согласно документу
+        :param date_of_birth: Дата рождения животного, согласно документу (в формате '2012-12-22')
+        :param birthplace: Страна рождения
+        :param nutrition: Тип питания
+        :param habitat: Среда обитания
+        """
         super().__init__(type_of_animal, name, date_of_birth, birthplace)
         self.nutrition = nutrition  # питание
         self.habitat = habitat  #  среда обитания
@@ -56,7 +70,15 @@ class Mammal(Animal):
 
 
 class Bird(Animal):
+    """Класс для хранения птиц в питомнике."""
     def __init__(self, type_of_animal, name, date_of_birth, birthplace, nutrition):
+        """Инициализирует новый экземпляр класса Bird.
+        :param type_of_animal: Вид, т.е. конкретное название животного
+        :param name: Имя животного, согласно документу
+        :param date_of_birth: Дата рождения животного, согласно документу (в формате '2012-12-22')
+        :param birthplace: Страна рождения
+        :param nutrition: Тип питания
+        """
         super().__init__(type_of_animal, name, date_of_birth, birthplace)
         self.nutrition = nutrition  # питание
 
@@ -81,7 +103,15 @@ class Bird(Animal):
 
 
 class Pet(Animal):
+    """Класс для хранения домашних питомцев в питомнике."""
     def __init__(self, type_of_animal, name, date_of_birth, birthplace, breed):
+        """Инициализирует новый экземпляр класса Pet.
+        :param type_of_animal: Вид, т.е. конкретное название животного
+        :param name: Имя животного, согласно документу
+        :param date_of_birth: Дата рождения животного, согласно документу (в формате '2012-12-22')
+        :param birthplace: Страна рождения
+        :param breed: Порода
+        """
         super().__init__(type_of_animal, name, date_of_birth, birthplace)
         self.breed = breed
         self.commands = []
@@ -110,9 +140,18 @@ class Pet(Animal):
 
 
 class PackAnimal(Pet):
+    """Класс для хранения вьючных животных в питомнике."""
     def __init__(self, type_of_animal, name, date_of_birth, birthplace, breed, lifting_capacity):
+        """Инициализирует новый экземпляр класса PackAnimal.
+        :param type_of_animal: Вид, т.е. конкретное название животного
+        :param name: Имя животного, согласно документу
+        :param date_of_birth: Дата рождения животного, согласно документу (в формате '2012-12-22')
+        :param birthplace: Страна рождения
+        :param breed: Порода
+        :param lifting_capacity: Грузоподъемность вьючного животного
+        """
         super().__init__(type_of_animal, name, date_of_birth, birthplace, breed)
-        self.lifting_capacity = lifting_capacity  #  грузоподъемность вьючного животного
+        self.lifting_capacity = lifting_capacity
 
     def get_name(self):
         return self.name

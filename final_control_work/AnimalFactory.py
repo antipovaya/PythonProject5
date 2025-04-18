@@ -74,12 +74,6 @@ class AnimalFactory:
 # Создаем экземпляры животных с использованием фабрики
 # dog = AnimalFactory.create_animal('Собака', 'Малыш', '2020-10-12', 'Россия', 'Шпиц')
 
-# print(type(dog.get_type_of_animal()))
-# print(type(dog.get_name()))
-# print(type(dog.get_date_of_birth()))
-# print(type(dog.get_age()))
-# print(type(dog.get_breed()))
-
 
 
 
