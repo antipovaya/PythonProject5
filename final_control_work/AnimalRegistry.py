@@ -308,7 +308,7 @@ class AnimalRegistry:
         with sqlite3.connect('Animal_registry.db') as connection:
             # Write the SQL command to select all records from the table
             select_query = f"SELECT * FROM {name_table};"
-
+            pd.options.display.max_columns = None
             # Use pandas to read SQL query directly into a DataFrame
             df = pd.read_sql_query(select_query, connection)
 

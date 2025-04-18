@@ -99,15 +99,20 @@ def main():
                 AnimalRegistry.reading_table('Pet_commands')
                 additional_command = input('Введите название таблицы, с которой хотите работать: ')
                 if additional_command == 'Pet':
-                    update_animal = int(input('Введите id строки, которую хотите обновить: '))
-                    column_update = input('Введите название столбца, который хотите обновить: ')
-                    if column_update == 'age':
-                        new_value = int(input('Введите возраст: '))
-                        AnimalRegistry.update_table('Pet', update_animal, column_update, new_value)
-                    else:
-                        new_value = input('Введите новое значение: ')
-                        AnimalRegistry.update_table('Pet', update_animal, column_update, new_value)
-                    AnimalRegistry.reading_table('Pet')
+                    additional_command = input('Вы хотите обновить строку - 1 '
+                                               'или таблицу целиком (возраст всех животных) - 2? ')
+                    if additional_command == '2':
+                        AnimalRegistry.update_age('Pet')
+                    elif additional_command == '1':
+                        update_animal = int(input('Введите id строки, которую хотите обновить: '))
+                        column_update = input('Введите название столбца, который хотите обновить: ')
+                        if column_update == 'age':
+                            new_value = int(input('Введите возраст: '))
+                            AnimalRegistry.update_table('Pet', update_animal, column_update, new_value)
+                        else:
+                            new_value = input('Введите новое значение: ')
+                            AnimalRegistry.update_table('Pet', update_animal, column_update, new_value)
+                        AnimalRegistry.reading_table('Pet')
                 elif additional_command == 'Pet_commands':
                     pet_id = int(input('Введите id питомца, которому хотите добавить новую команду: '))
                     command_pet = input('Введите название команды: ')
@@ -115,39 +120,54 @@ def main():
 
             elif additional_command == '2':
                 AnimalRegistry.reading_table('Pack_animal')
-                update_animal = int(input('Введите id строки, которую хотите обновить: '))
-                column_update = input('Введите название столбца, который хотите обновить: ')
-                if column_update == 'age':
-                    new_value = int(input('Введите возраст: '))
-                    AnimalRegistry.update_table('Pack_animal', update_animal, column_update, new_value)
-                else:
-                    new_value = input('Введите новое значение: ')
-                    AnimalRegistry.update_table('Pack_animal', update_animal, column_update, new_value)
-                AnimalRegistry.reading_table('Pack_animal')
+                additional_command = input('Вы хотите обновить строку - 1 '
+                                           'или таблицу целиком (возраст всех животных) - 2? ')
+                if additional_command == '2':
+                    AnimalRegistry.update_age('Pack_animal')
+                elif additional_command == '1':
+                    update_animal = int(input('Введите id строки, которую хотите обновить: '))
+                    column_update = input('Введите название столбца, который хотите обновить: ')
+                    if column_update == 'age' or column_update == 'lifting_capacity':
+                        new_value = int(input('Введите новое значение: '))
+                        AnimalRegistry.update_table('Pack_animal', update_animal, column_update, new_value)
+                    else:
+                        new_value = input('Введите новое значение: ')
+                        AnimalRegistry.update_table('Pack_animal', update_animal, column_update, new_value)
+                    AnimalRegistry.reading_table('Pack_animal')
 
             elif additional_command == '3':
                 AnimalRegistry.reading_table('Mammal')
-                update_animal = int(input('Введите id строки, которую хотите обновить: '))
-                column_update = input('Введите название столбца, который хотите обновить: ')
-                if column_update == 'age':
-                    new_value = int(input('Введите возраст: '))
-                    AnimalRegistry.update_table('Mammal', update_animal, column_update, new_value)
-                else:
-                    new_value = input('Введите новое значение: ')
-                    AnimalRegistry.update_table('Mammal', update_animal, column_update, new_value)
-                AnimalRegistry.reading_table('Mammal')
+                additional_command = input('Вы хотите обновить строку - 1 '
+                                           'или таблицу целиком (возраст всех животных) - 2? ')
+                if additional_command == '2':
+                    AnimalRegistry.update_age('Mammal')
+                elif additional_command == '1':
+                    update_animal = int(input('Введите id строки, которую хотите обновить: '))
+                    column_update = input('Введите название столбца, который хотите обновить: ')
+                    if column_update == 'age':
+                        new_value = int(input('Введите возраст: '))
+                        AnimalRegistry.update_table('Mammal', update_animal, column_update, new_value)
+                    else:
+                        new_value = input('Введите новое значение: ')
+                        AnimalRegistry.update_table('Mammal', update_animal, column_update, new_value)
+                    AnimalRegistry.reading_table('Mammal')
 
             else:
                 AnimalRegistry.reading_table('Bird')
-                update_animal = int(input('Введите id строки, которую хотите обновить: '))
-                column_update = input('Введите название столбца, который хотите обновить: ')
-                if column_update == 'age':
-                    new_value = int(input('Введите возраст: '))
-                    AnimalRegistry.update_table('Bird', update_animal, column_update, new_value)
-                else:
-                    new_value = input('Введите новое значение: ')
-                    AnimalRegistry.update_table('Bird', update_animal, column_update, new_value)
-                AnimalRegistry.reading_table('Bird')
+                additional_command = input('Вы хотите обновить строку - 1 '
+                                           'или таблицу целиком (возраст всех животных) - 2? ')
+                if additional_command == '2':
+                    AnimalRegistry.update_age('Bird')
+                elif additional_command == '1':
+                    update_animal = int(input('Введите id строки, которую хотите обновить: '))
+                    column_update = input('Введите название столбца, который хотите обновить: ')
+                    if column_update == 'age':
+                        new_value = int(input('Введите возраст: '))
+                        AnimalRegistry.update_table('Bird', update_animal, column_update, new_value)
+                    else:
+                        new_value = input('Введите новое значение: ')
+                        AnimalRegistry.update_table('Bird', update_animal, column_update, new_value)
+                    AnimalRegistry.reading_table('Bird')
 
         elif command == '4':
             additional_command = input('В какой таблице осуществлять поиск? 1 - домашние питомцы, '
